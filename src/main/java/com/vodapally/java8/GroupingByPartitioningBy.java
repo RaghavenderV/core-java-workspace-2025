@@ -4,9 +4,8 @@ import com.vodapally.common.Employee;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class GrupingByPartitioningBy {
+public class GroupingByPartitioningBy {
     public static void main(String[] args) {
         List<Employee> list = List.of(
                 new Employee(101, "Raghavender", 820000L, "Admin"),
