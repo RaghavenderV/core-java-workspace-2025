@@ -8,18 +8,18 @@ import java.util.stream.Collectors;
 
 public class PredicateExample {
 
-	public static void main(String[] args) {
-		Predicate<Integer> numberGreaterThan5 = x -> x>5;
-		Predicate<Integer> numberLessThan8 = x -> x<8;
+    public static void main(String[] args) {
+        Predicate<Integer> numberGreaterThan5 = x -> x > 5;
+        Predicate<Integer> numberLessThan8 = x -> x < 8;
 
-		List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
-		
-		// get list of integers which are greater than 5 and less than 8
-		List<Integer> collect = list.stream().filter(numberGreaterThan5.and(numberLessThan8))
-		.collect(Collectors.toList());
-		
-		collect.forEach(System.out::println);
-		
-	}
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        // get list of integers which are greater than 5 and less than 8
+        List<Integer> resultList = list.stream().filter(numberGreaterThan5.and(numberLessThan8))
+                .toList();
+
+        resultList.forEach(System.out::println);
+
+    }
 
 }

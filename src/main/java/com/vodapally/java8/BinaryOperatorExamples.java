@@ -1,9 +1,6 @@
 package com.vodapally.java8;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,19 +12,28 @@ public class BinaryOperatorExamples {
         BinaryOperator<Integer> bi = (a, b) -> a;
         System.out.println("a,b->a : " + bi.apply(12, 15));
 
+
         // Example-2
         BinaryOperator<Integer> maxOperator = BinaryOperator.maxBy(Comparator.naturalOrder());
         System.out.println("\nMax in 20 and 30 is : " + maxOperator.apply(20, 30));
 
+
         // Example-3 -> Sum up all integers in integer array
         Integer[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
         Integer result1 = sumTotal(List.of(numbers), 0, (a, b) -> (a + b)); //BinaryOperator as argument
         System.out.println("\nSum of integers using BinaryOperator : " + result1);
+
 
 
         // Sum up all integers in integer array using mapToInt
         int sum = Stream.of(numbers).mapToInt(n -> n).sum();
         System.out.println("Sum of integers using mapToInt : " + sum);
+
+        int[] intArray= {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int sum5 = Arrays.stream(intArray).sum();
+        System.out.println("\nintArray sum = " + sum5);
+
 
         // Sum up all integers in integer array using reduce - variant-1
         // reduce(BinaryOperator accumulator)
@@ -81,12 +87,13 @@ public class BinaryOperatorExamples {
         return result;
     }
 
+
     private static <T> T sumTotal(List<T> list, T init, BinaryOperator<T> accumulator) {
-        T result = init;
+        T sum = init;
         for (T t : list) {
-            result = accumulator.apply(result, t);
+            sum = accumulator.apply(sum, t);
         }
-        return result;
+        return sum;
     }
 } //main
 
